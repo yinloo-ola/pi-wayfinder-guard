@@ -1,0 +1,21 @@
+NOTICE
+
+This extension contains derivative works from the following sources:
+
+mattpocock/skills (MIT)
+
+Files derived from https://github.com/mattpocock/skills @ d574778:
+
+- skills/wayfinder/SKILL.md
+- skills/to-spec/SKILL.md
+- skills/to-tickets/SKILL.md
+- skills/implement/SKILL.md
+- skills/code-review/SKILL.md
+- skills/research/SKILL.md
+- skills/prototype/SKILL.md
+- skills/grilling/SKILL.md
+- skills/domain-modeling/SKILL.md
+- skills/tdd/SKILL.md
+- skills/setup-matt-pocock-skills/SKILL.md
+
+Each file's header also carries its individual attribution.

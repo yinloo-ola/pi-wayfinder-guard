@@ -1,0 +1,39 @@
+{
+	"name": "pi-matt-pocock-skills",
+	"version": "0.1.0",
+	"description": "Pi extension bundling Matt Pocock's engineering skills with parallel sub-agent support",
+	"type": "module",
+	"keywords": [
+		"pi-package",
+		"pi-extension",
+		"matt-pocock",
+		"skills"
+	],
+	"license": "MIT",
+	"author": "",
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"pi": {
+		"extensions": [
+			"./src/extension.ts"
+		]
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-agent-core": "*",
+		"@earendil-works/pi-ai": "*",
+		"@earendil-works/pi-coding-agent": "*",
+		"@earendil-works/pi-tui": "*",
+		"typebox": "*"
+	},
+	"devDependencies": {
+		"@earendil-works/pi-agent-core": "^0.80.6",
+		"@earendil-works/pi-ai": "^0.80.6",
+		"@earendil-works/pi-coding-agent": "^0.80.6",
+		"@earendil-works/pi-tui": "^0.80.6",
+		"@types/node": "^22.0.0",
+		"typebox": "^1.3.6",
+		"typescript": "^5.7.0"
+	}
+}
