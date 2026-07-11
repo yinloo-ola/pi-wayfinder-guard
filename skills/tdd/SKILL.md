@@ -1,10 +1,10 @@
-<!-- Derived from mattpocock/skills @ d574778, skills/engineering/tdd/SKILL.md -->
-Copyright (c) 2026 Matt Pocock. Licensed under MIT.
-
 ---
 name: tdd
 description: Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants integration tests.
 ---
+
+<!-- Derived from mattpocock/skills @ d574778, skills/engineering/tdd/SKILL.md -->
+Copyright (c) 2026 Matt Pocock. Licensed under MIT.
 
 # Test-Driven Development
 

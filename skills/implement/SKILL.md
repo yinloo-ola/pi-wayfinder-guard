@@ -1,11 +1,11 @@
-<!-- Derived from mattpocock/skills @ d574778, skills/engineering/implement/SKILL.md -->
-Copyright (c) 2026 Matt Pocock. Licensed under MIT.
-
 ---
 name: implement
 description: "Implement a piece of work based on a spec or set of tickets."
 disable-model-invocation: true
 ---
+
+<!-- Derived from mattpocock/skills @ d574778, skills/engineering/implement/SKILL.md -->
+Copyright (c) 2026 Matt Pocock. Licensed under MIT.
 
 Implement the work described by the user in the spec or tickets.
 

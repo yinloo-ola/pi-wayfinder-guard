@@ -10,16 +10,33 @@
 		"skills"
 	],
 	"license": "MIT",
-	"author": "",
+	"author": "Tianhai (https://github.com/yinloo-ola)",
 	"repository": {
 		"type": "git",
-		"url": ""
+		"url": "https://github.com/yinloo-ola/pi-matt-pocock-skills"
+	},
+	"homepage": "https://github.com/yinloo-ola/pi-matt-pocock-skills#readme",
+	"bugs": {
+		"url": "https://github.com/yinloo-ola/pi-matt-pocock-skills/issues"
 	},
 	"pi": {
 		"extensions": [
 			"./src/extension.ts"
-		]
+		],
+		"skills": ["./skills"],
+		"prompts": ["./prompts"]
 	},
+	"files": [
+		"src/",
+		"agents/",
+		"skills/",
+		"prompts/",
+		"LICENSE",
+		"NOTICE",
+		"UPSTREAM-CHANGES.md",
+		"README.md",
+		"CHANGELOG.md"
+	],
 	"peerDependencies": {
 		"@earendil-works/pi-agent-core": "*",
 		"@earendil-works/pi-ai": "*",

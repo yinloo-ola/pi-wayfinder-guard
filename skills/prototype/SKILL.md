@@ -1,10 +1,10 @@
-<!-- Derived from mattpocock/skills @ d574778, skills/engineering/prototype/SKILL.md -->
-Copyright (c) 2026 Matt Pocock. Licensed under MIT.
-
 ---
 name: prototype
 description: Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
 ---
+
+<!-- Derived from mattpocock/skills @ d574778, skills/engineering/prototype/SKILL.md -->
+Copyright (c) 2026 Matt Pocock. Licensed under MIT.
 
 # Prototype
 

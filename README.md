@@ -7,7 +7,7 @@ This extension is derived from [mattpocock/skills](https://github.com/mattpocock
 ## Installation
 
 ```bash
-npm install -g pi-matt-pocock-skills
+pi install npm:pi-matt-pocock-skills
 ```
 
 After installing, restart pi to pick up the extension and bundled skills.
@@ -81,24 +81,7 @@ A vendored copy of pi's `subagent` tool (from pi v0.80.6 @ `34582ef`), registere
 /grilling
 ```
 
-The workflow prompts (`/code-review`, `/implement`, etc.) use the `subagent` tool internally. Agents need to be installed to your user agent directory before first use (see [Setup](#setup)).
-
-## Setup
-
-### Agent installation
-
-The bundled agent definitions (in `agents/`) must be installed to pi's user-level agent directory so the `subagent` tool can discover them:
-
-```bash
-# Copy agents
-cp -r path/to/agents/* ~/.pi/agent/agents/
-
-# Verify
-ls ~/.pi/agent/agents/
-# → implementer.md  planner.md  reviewer.md  scout.md  spec-reviewer.md  standards-reviewer.md
-```
-
-This step will be automated by the `setup-matt-pocock-skills` skill in a future release.
+The workflow prompts (`/code-review`, `/implement`, etc.) use the `subagent` tool internally. Bundled agent definitions are installed automatically on first load — no manual setup needed.
 
 ### Repo configuration
 

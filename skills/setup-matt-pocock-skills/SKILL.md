@@ -1,11 +1,11 @@
-<!-- Derived from mattpocock/skills @ d574778, skills/engineering/setup-matt-pocock-skills/SKILL.md -->
-Copyright (c) 2026 Matt Pocock. Licensed under MIT.
-
 ---
 name: setup-matt-pocock-skills
 description: Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.
 disable-model-invocation: true
 ---
+
+<!-- Derived from mattpocock/skills @ d574778, skills/engineering/setup-matt-pocock-skills/SKILL.md -->
+Copyright (c) 2026 Matt Pocock. Licensed under MIT.
 
 # Setup Matt Pocock's Skills
 
