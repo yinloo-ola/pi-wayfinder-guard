@@ -1,6 +1,6 @@
 {
 	"name": "pi-matt-pocock-skills",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Pi extension bundling Matt Pocock's engineering skills with parallel sub-agent support",
 	"type": "module",
 	"keywords": [

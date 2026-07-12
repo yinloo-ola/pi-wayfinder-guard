@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.2.0 (2026-07-12)
+
+Cohesion audit — the extension is now a coherent, honest derivative of `mattpocock/skills` @ `d574778`.
+
+### Changed (breaking)
+
+- **Prompt renames** to a consistent `-chain` suffix: `/implement-and-review` → `/implement-review-chain`, `/scout-and-plan` → `/scout-plan-chain`, `/implement` (prompt) → `/implement-chain`. Rule: `/foo` is a skill, `/foo-chain` is a sub-agent-delegating prompt.
+- **`/code-review` is a skill only** — the colliding prompt is removed; the skill now uses the dedicated `standards-reviewer` + `spec-reviewer` agents (was `general-purpose`).
+- **`/implement-review-chain` now runs the full two-axis review** (parallel `standards-reviewer` + `spec-reviewer`), not a generic reviewer pass.
+- **Generic `reviewer` agent removed** (6 → 5 agents); nothing invoked it after the chain upgrade.
+
+### Added
+
+- **11 skill companion files** restored verbatim (issue-tracker templates, triage-labels, domain, CONTEXT/ADR formats, prototype LOGIC/UI, tdd tests/mocking) — now shipped via `npm pack`.
+- **README `## Workflow` section** — lifecycle diagram, supporting skills, prompt chains, HITL↔AFK ranking.
+- **`UPSTREAM-CHANGES.md` Batch 2** — records every post-derivation delta.
+
+### Fixed
+
+- Rephrased 7 `disable-model-invocation` slash-references to address the user, not the model (`implement`, `to-tickets`, `wayfinder`).
+- `NOTICE` now lists all derived companion files.
+
 ## 0.1.0 (2026-07-10)
 
 Initial release.
