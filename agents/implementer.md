@@ -25,6 +25,6 @@ What was done and how.
 ### Notes
 Anything the invoker should know.
 
-If handing off to a reviewer:
+If handing off to the two-axis reviewers (`standards-reviewer` + `spec-reviewer`):
 - Exact file paths changed
 - Key functions/types touched (short list)

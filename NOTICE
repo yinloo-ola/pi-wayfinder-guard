@@ -18,4 +18,18 @@ Files derived from https://github.com/mattpocock/skills @ d574778:
 - skills/tdd/SKILL.md
 - skills/setup-matt-pocock-skills/SKILL.md
 
+Companion files (referenced by the skills above, copied verbatim, no individual header):
+
+- skills/setup-matt-pocock-skills/issue-tracker-github.md
+- skills/setup-matt-pocock-skills/issue-tracker-gitlab.md
+- skills/setup-matt-pocock-skills/issue-tracker-local.md
+- skills/setup-matt-pocock-skills/triage-labels.md
+- skills/setup-matt-pocock-skills/domain.md
+- skills/domain-modeling/CONTEXT-FORMAT.md
+- skills/domain-modeling/ADR-FORMAT.md
+- skills/prototype/LOGIC.md
+- skills/prototype/UI.md
+- skills/tdd/tests.md
+- skills/tdd/mocking.md
+
 Each file's header also carries its individual attribution.
