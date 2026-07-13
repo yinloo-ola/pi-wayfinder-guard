@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.1 (2026-07-13)
+## 0.4.1 (2026-07-14)
 
 ### Fixed
 
@@ -9,6 +9,19 @@
 ### Added
 
 - **Invisible entry/exit reminders** — `/wayfinder` transitions now emit hidden custom messages (`wayfinder-guard:reminder`) that tell the model when fog mode turns on or off. This resolves cases where the model continued to behave verbally as if wayfinder was still active after toggling off.
+
+## 0.4.0 (2026-07-13)
+
+Four-axis parallel code review — added dedicated **Security** and **Optimization** reviewers.
+
+### Added
+
+- **`security-reviewer` agent** — reviews the diff for security vulnerabilities and production hazards, assuming a hostile world.
+- **`optimization-reviewer` agent** — reviews the diff for optimization issues, scaled to 100x and checked for silent errors.
+
+### Changed
+
+- **`/review` prompt** — upgraded from two-axis (Standards + Spec) to **four-axis** (Standards, Spec + Traceability, Security, Optimization). Reports now come back under `## Standards`, `## Spec`, `## Security`, and `## Optimization`; the spec-reviewer also traces every entry point's call chain for seam breaks and round-trip proof.
 
 ## 0.3.0 (2026-07-13)
 

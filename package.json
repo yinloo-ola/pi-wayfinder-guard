@@ -1,6 +1,6 @@
 {
 	"name": "pi-wayfinder-guard",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "Pi extension enforcing no-implementation during wayfinder (fog mode), with a parallel two-axis code review.",
 	"type": "module",
 	"keywords": [
