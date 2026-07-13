@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.3.0 (2026-07-13)
+
+Simplification — the extension is now **`pi-wayfinder-guard`** (renamed from `pi-matt-pocock-skills`).
+
+### Added
+
+- **Fog mode** (`/wayfinder`) — enforces no implementation during wayfinder. A denylist with reasons blocks source edits, config/manifest changes, git mutations, dependency installs, and bash-based file mutation (`sed -i`, output redirects, `cp`/`mv`/`tee`/`dd`) while fog mode is on; read-only exploration, writing notes/`.md`, and running tests/builds stay allowed. Backed by a `tool_call` block plus a proactive `before_agent_start` system-prompt note.
+
+### Removed (breaking)
+
+- **All 12 skills** — users manage and update skills themselves.
+- **3 agents** — `scout`, `planner`, `implementer` (sequential/single use). Only the parallel two-axis reviewers remain.
+- **3 chain prompts** — `scout-plan-chain`, `implement-chain`, `implement-review-chain`. Replaced by a single parallel `/review` prompt.
+- **`setup-matt-pocock-skills`** and its generated repo docs (`AGENTS.md`, `docs/`).
+- `NOTICE`, `UPSTREAM-CHANGES.md`, `scripts/check.mjs`, `HANDOFF.md` — all skill-derived or obsolete.
+
+### Changed
+
+- Package renamed `pi-matt-pocock-skills` → `pi-wayfinder-guard`.
+- `prompts/review.md` — parallel two-axis review (Standards + Spec) against the current diff.
+
 ## 0.2.1 (2026-07-12)
 
 Default-entry fix + cohesion polish — the extension now owns its own `/grill-with-docs`.

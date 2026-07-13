@@ -1,44 +1,38 @@
 {
-	"name": "pi-matt-pocock-skills",
-	"version": "0.2.0",
-	"description": "Pi extension bundling Matt Pocock's engineering skills with parallel sub-agent support",
+	"name": "pi-wayfinder-guard",
+	"version": "0.3.0",
+	"description": "Pi extension enforcing no-implementation during wayfinder (fog mode), with a parallel two-axis code review.",
 	"type": "module",
 	"keywords": [
 		"pi-package",
 		"pi-extension",
-		"matt-pocock",
-		"skills"
+		"wayfinder",
+		"code-review"
 	],
 	"license": "MIT",
 	"author": "Tianhai (https://github.com/yinloo-ola)",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/yinloo-ola/pi-matt-pocock-skills"
+		"url": "https://github.com/yinloo-ola/pi-wayfinder-guard"
 	},
-	"homepage": "https://github.com/yinloo-ola/pi-matt-pocock-skills#readme",
+	"homepage": "https://github.com/yinloo-ola/pi-wayfinder-guard#readme",
 	"bugs": {
-		"url": "https://github.com/yinloo-ola/pi-matt-pocock-skills/issues"
+		"url": "https://github.com/yinloo-ola/pi-wayfinder-guard/issues"
 	},
 	"scripts": {
-		"check": "node scripts/check.mjs",
 		"typecheck": "tsc --noEmit"
 	},
 	"pi": {
 		"extensions": [
 			"./src/extension.ts"
 		],
-		"skills": ["./skills"],
 		"prompts": ["./prompts"]
 	},
 	"files": [
 		"src/",
 		"agents/",
-		"skills/",
 		"prompts/",
-		"scripts/check.mjs",
 		"LICENSE",
-		"NOTICE",
-		"UPSTREAM-CHANGES.md",
 		"README.md",
 		"CHANGELOG.md"
 	],

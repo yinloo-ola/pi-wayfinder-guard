@@ -17,4 +17,4 @@ The vendored files import from `@earendil-works/pi-coding-agent`, `@earendil-wor
 
 ## Delta tracking
 
-Verbatim copy (B1). Any future modifications tracked in `UPSTREAM-CHANGES.md`.
+Verbatim copy (B1), unmodified.
