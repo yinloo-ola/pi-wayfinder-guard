@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.1 (2026-07-13)
+
+### Fixed
+
+- **Fog-mode toggle** — `/wayfinder off` now actively removes the fog note from the system prompt instead of leaving it in the model's visible context. The note is wrapped in delimiters so `before_agent_start` can strip and re-inject it deterministically.
+
+### Added
+
+- **Invisible entry/exit reminders** — `/wayfinder` transitions now emit hidden custom messages (`wayfinder-guard:reminder`) that tell the model when fog mode turns on or off. This resolves cases where the model continued to behave verbally as if wayfinder was still active after toggling off.
+
 ## 0.3.0 (2026-07-13)
 
 Simplification — the extension is now **`pi-wayfinder-guard`** (renamed from `pi-matt-pocock-skills`).

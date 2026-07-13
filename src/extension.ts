@@ -20,7 +20,16 @@ const __dirname = path.dirname(__filename);
 // a denylist blocks implementation actions and returns a reason so the model
 // can self-correct. The denylist is intentionally additive — extend it to
 // cover your stack.
+//
+// The fog note is wrapped in delimiters so `before_agent_start` can *remove*
+// it again when fog mode is turned off. Without active removal, the note can
+// persist in the model's visible context across turns even after `/wayfinder
+// off`, because returning `undefined` from `before_agent_start` may leave a
+// previously replaced system prompt in place.
 // ---------------------------------------------------------------------------
+
+const FOG_NOTE_DELIMITER_START = "<!-- wayfinder-guard:fog-note -->";
+const FOG_NOTE_DELIMITER_END = "<!-- /wayfinder-guard:fog-note -->";
 
 let fogMode = false;
 
@@ -52,6 +61,36 @@ const FOG_DENY_PATHS: DenyRule[] = [
 			/\.lock$/i.test(p),
 	},
 ];
+
+/** Fog note injected into the system prompt while fog mode is active. */
+function buildFogNote(): string {
+	return (
+		"\n\n" +
+		FOG_NOTE_DELIMITER_START +
+		"\n## Fog mode active (/wayfinder)\n" +
+		"You are clearing fog — wayfinder/exploration only. You may explore (read, grep, find, ls) and write *notes, tickets, CONTEXT.md, and ADRs*. " +
+		"Do NOT implement: source edits, builds, tests, installs, and commits are blocked. " +
+		"Exit fog mode with `/wayfinder off` once a spec exists." +
+		"\n" +
+		FOG_NOTE_DELIMITER_END
+	);
+}
+
+/** Remove every fog-note block from a system prompt, leaving base text clean. */
+function stripFogNote(systemPrompt: string): string {
+	let result = systemPrompt;
+	while (true) {
+		const start = result.indexOf(FOG_NOTE_DELIMITER_START);
+		if (start === -1) break;
+		const end = result.indexOf(FOG_NOTE_DELIMITER_END, start);
+		if (end === -1) break;
+		result =
+			result.slice(0, start).trimEnd() +
+			"\n\n" +
+			result.slice(end + FOG_NOTE_DELIMITER_END.length).trimStart();
+	}
+	return result.trimEnd();
+}
 
 // Running these commands is implementation. Test/build/run are deliberately
 // NOT blocked: with source writes blocked (FOG_DENY_PATHS), they can only act
@@ -139,10 +178,30 @@ export default function (pi: ExtensionAPI) {
 		description:
 			"Toggle fog mode — enforce no implementation (exploration/wayfinder only). Usage: /wayfinder [on|off]",
 		handler: async (args, ctx) => {
+			const wasFogMode = fogMode;
 			const arg = (args ?? "").trim().toLowerCase();
 			if (arg === "off") fogMode = false;
 			else if (arg === "on") fogMode = true;
 			else fogMode = !fogMode; // bare /wayfinder toggles
+
+			// Send invisible reminders on state transitions. This fixes the case
+			// where the model still verbally behaves as if wayfinder is on after
+			// `/wayfinder off`, even though the tool guard is released.
+			if (!wasFogMode && fogMode) {
+				pi.sendMessage({
+					customType: "wayfinder-guard:reminder",
+					content:
+						"Fog mode is now ON. Exploration and planning only — do not edit source files, update manifests/config, install dependencies, or perform git mutations.",
+					display: false,
+				});
+			} else if (wasFogMode && !fogMode) {
+				pi.sendMessage({
+					customType: "wayfinder-guard:reminder",
+					content:
+						"Fog mode is now OFF. You may implement: edit source files, update manifests, run installs, and perform git mutations as requested.",
+					display: false,
+				});
+			}
 
 			ctx.ui.notify(
 				fogMode
@@ -155,13 +214,11 @@ export default function (pi: ExtensionAPI) {
 
 	// --- Proactive note while fog mode is on ------------------------------
 	pi.on("before_agent_start", async (event) => {
-		if (!fogMode) return;
-		const note =
-			"\n\n## Fog mode active (/wayfinder)\n" +
-			"You are clearing fog — wayfinder/exploration only. You may explore (read, grep, find, ls) and write *notes, tickets, CONTEXT.md, and ADRs*. " +
-			"Do NOT implement: source edits, builds, tests, installs, and commits are blocked. " +
-			"Exit fog mode with `/wayfinder off` once a spec exists.";
-		return { systemPrompt: event.systemPrompt + note };
+		let systemPrompt = stripFogNote(event.systemPrompt);
+		if (fogMode) {
+			systemPrompt = systemPrompt + buildFogNote();
+		}
+		return { systemPrompt };
 	});
 
 	// --- Hard block on implementation actions -----------------------------

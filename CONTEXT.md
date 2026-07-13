@@ -43,3 +43,11 @@ _Avoid_: Fault tolerance, error handling
 **Fog mode**:
 The wayfinder phase where source-code edits, dependency installs, and git mutations are blocked. Only exploration, notes, and planning allowed.
 _Avoid_: Locked mode, read-only mode
+
+**Fog note**:
+The system-prompt text injected while fog mode is active, reminding the model that implementation is blocked.
+_Avoid_: Wayfinder reminder, fog message
+
+**Exit reminder**:
+A one-time message delivered to the model when `/wayfinder off` is run, confirming fog mode has ended and implementation is allowed again.
+_Avoid_: Off message, unlock notice
