@@ -13,6 +13,7 @@ Verbatim copy with attribution header prepended.
 | Skill | Upstream path | Delta |
 |-------|--------------|-------|
 | wayfinder | `skills/engineering/wayfinder/SKILL.md` | +3 lines (attribution header) |
+| grill-with-docs | `skills/engineering/grill-with-docs/SKILL.md` | +3 lines (attribution header) |
 | to-spec | `skills/engineering/to-spec/SKILL.md` | +3 lines (attribution header) |
 | to-tickets | `skills/engineering/to-tickets/SKILL.md` | +3 lines (attribution header) |
 | implement | `skills/engineering/implement/SKILL.md` | +3 lines (attribution header) |
@@ -70,3 +71,11 @@ Renamed to the `-chain` convention: `/foo` = a skill, `/foo-chain` = a sub-agent
 ### Restored verbatim (no delta)
 
 The 11 companion files referenced by `setup-matt-pocock-skills`, `domain-modeling`, `prototype`, and `tdd` were absent from the initial derivation and **restored verbatim** from `d574778`. Zero delta — copied unchanged, no attribution header (each is covered by its parent skill's header), and listed under "Companion files" in `NOTICE`. Noted here for completeness so the record accounts for every file under `skills/`.
+
+## Batch 3: grill-with-docs restored (2026-07-12)
+
+The `grill-with-docs` skill was absent from the initial derivation. It is upstream's documented default entry to the engineering lifecycle — a thin orchestrator whose body is `Run a /grilling session, using the /domain-modeling skill`, coupling the core `/grilling` interview with `/domain-modeling`'s glossary + ADR capture. Without it the extension did not own its default entry point (sessions fell back to a foreign `~/.agents/skills/grill-with-docs/` copy), and the README lifecycle diverged from the v1.1 video narrative.
+
+Restored **verbatim** from `d574778` (`skills/engineering/grill-with-docs/SKILL.md`), with the standard +3-line attribution header. No content edits. The bare `grilling` skill is retained as the core interview primitive — `grill-with-docs` depends on it. `grill-me` (upstream's docs-less alias) is intentionally **not** bundled: this extension packages a single engineering lifecycle, and the README points at one entry (`/grill-with-docs`), not a family of aliases.
+
+Skill count is now **12** (was 11).

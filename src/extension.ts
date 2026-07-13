@@ -23,13 +23,17 @@ function ensureAgentsInstalled(): void {
 	}
 
 	let copiedCount = 0;
+	const skipped: string[] = [];
 	for (const entry of fs.readdirSync(sourceDir)) {
 		if (!entry.endsWith(".md")) continue;
 		const src = path.join(sourceDir, entry);
 		const dst = path.join(targetDir, entry);
 
 		// Skip if the user already has a copy (don't overwrite customizations)
-		if (fs.existsSync(dst)) continue;
+		if (fs.existsSync(dst)) {
+			skipped.push(entry);
+			continue;
+		}
 
 		fs.copyFileSync(src, dst);
 		copiedCount++;
@@ -39,6 +43,15 @@ function ensureAgentsInstalled(): void {
 	if (copiedCount > 0) {
 		console.log(
 			`[matt-pocock-skills] Installed ${copiedCount} agent(s) to ${targetDir}`,
+		);
+	}
+	if (skipped.length > 0) {
+		// Some bundled agents were already present — they may be stale customizations
+		// shadowing the bundled copies. Surface this once so a user wondering why an
+		// agent behaves unexpectedly (or a chain can't find one) has a trail. Fires
+		// on partial installs too, not just when every agent is pre-existing.
+		console.warn(
+			`[matt-pocock-skills] ${skipped.length} bundled agent(s) already present and left unchanged: ${skipped.join(", ")}. Delete them from ${targetDir} to pick up this extension's versions.`,
 		);
 	}
 }

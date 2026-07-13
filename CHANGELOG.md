@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.1 (2026-07-12)
+
+Default-entry fix + cohesion polish — the extension now owns its own `/grill-with-docs`.
+
+### Added
+
+- **`grill-with-docs` skill** (12th skill) — the documented default entry to the v1.1 lifecycle, restored verbatim from `mattpocock/skills` @ `d574778`. Without it, sessions fell back to a foreign copy and the README lifecycle diverged from the video narrative.
+- **`scripts/check.mjs`** — static sanity checks (`npm run check`): SKILL.md frontmatter parses, companion refs resolve, skill-count consistent across README/NOTICE/tree, every file ships via `npm pack`. Catches the regressions that previously bit this repo.
+
+### Changed
+
+- **README lifecycle** — `/grill-with-docs` is now the default entry (was bare `/grilling`). The diagram, skill table, and supporting-skills section updated; `/grilling` reframed as the core primitive both `/grill-with-docs` and wayfinder's grilling tickets build on. `/domain-modeling` is now documented as captured automatically by `/grill-with-docs`.
+- **`ensureAgentsInstalled()`** — now warns when bundled agents are already present (previously silently skipped, leaving no trail when a stale customization shadowed a bundled agent). Fires on partial installs too.
+- **NOTICE / UPSTREAM-CHANGES** — account for the 12th skill (Batch 3 delta record).
+
 ## 0.2.0 (2026-07-12)
 
 Cohesion audit — the extension is now a coherent, honest derivative of `mattpocock/skills` @ `d574778`.
