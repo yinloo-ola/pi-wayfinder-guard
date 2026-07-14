@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.0 (2026-07-14)
+
+### Changed (breaking)
+
+- **`/wayfinder` command removed; fog state is now derived from the active skill.** Running `/skill:wayfinder` turns fog ON, `/skill:implement` turns it OFF, and other skills (or non-skill messages) leave fog unchanged — so fog stays on across the whole wayfinder phase until the implement phase begins. This eliminates the cross-extension toggle problem (another extension like `pi-web-sync` can't dispatch `/wayfinder` via `sendUserMessage` because pi disables command dispatch for extension-sent messages — see `docs/adr/0002-fog-mode-toggle-seam.md`). Detection uses pi's own exported `parseSkillBlock` on the finalized user message (`message_start` event), and the `context` event back-computes fog state on session resume/fork.
+
+### Added
+
+- **`/fog on|off|auto` manual override** — escape hatch that pins fog to the given value until the next `/fog` call (skill transitions are ignored while pinned). `/fog auto` clears the pin so skill transitions drive fog again. Replaces the mid-phase toggle that `/wayfinder off` used to provide.
+
 ## 0.5.0 (2026-07-14)
 
 ### Changed
