@@ -4,7 +4,7 @@ argument-hint: "[fixed-point]"
 ---
 Run a **four-axis code review** of the current changes using the subagent tool in **parallel** mode.
 
-The fixed-point is `${1:-HEAD}` — pass a commit/branch/tag (e.g. `/review main`), or omit to review the working tree against `HEAD`.
+The fixed-point is `${1:-HEAD}` — pass a commit/branch/tag (e.g. `/code-review main`), or omit to review the working tree against `HEAD`.
 
 Use the subagent tool with the `tasks` parameter (parallel mode), each pointed at the diff `git diff ${1:-HEAD}`:
 

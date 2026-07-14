@@ -1,15 +1,15 @@
 # Matt Pocock Review Workflow
 
-Five-axis code review that runs as the final quality gate in the Matt Pocock workflow (wayfinder → to-spec → to-tickets → implement → review).
+Four-axis code review that runs as the final quality gate in the Matt Pocock workflow (wayfinder → to-spec → to-tickets → implement → review).
 
 ## Language
 
 **Code review**:
-A multi-axis quality gate that runs five specialized agents in parallel, each checking a distinct concern against the diff since a fixed point.
+A multi-axis quality gate that runs four specialized agents in parallel, each checking a distinct concern against the diff since a fixed point.
 _Avoid_: Code audit, PR review, QA pass
 
 **Review axis**:
-One of the five specialized review perspectives run by `/review`. Each axis has a dedicated agent with its own methodology and output format.
+One of the four specialized review perspectives run by `/code-review`. Each axis has a dedicated agent with its own methodology and output format.
 _Avoid_: Review category, review type, review dimension
 
 **Seam**:

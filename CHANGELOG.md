@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0 (2026-07-14)
+
+### Changed
+
+- **`/review` renamed to `/code-review`** — renamed `prompts/review.md` → `prompts/code-review.md` so the command matches the `/code-review` step referenced by the [mattpocock implement skill](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement/SKILL.md). The previous `/review` command no longer exists. (breaking)
+
 ## 0.4.1 (2026-07-14)
 
 ### Fixed

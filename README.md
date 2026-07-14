@@ -1,6 +1,6 @@
 # pi-wayfinder-guard
 
-> A pi extension that enforces **no implementation during wayfinder** (fog mode), plus a **parallel two-axis code review**.
+> A pi extension that enforces **no implementation during wayfinder** (fog mode), plus a **parallel four-axis code review**.
 
 ## Why
 
@@ -34,21 +34,21 @@ The rules live in `src/extension.ts` as two arrays — `FOG_DENY_PATHS` and `FOG
 
 ## Parallel code review
 
-`/review [fixed-point]` runs a **four-axis review** in parallel using the subagent tool:
+`/code-review [fixed-point]` runs a **four-axis review** in parallel using the subagent tool:
 
 - **standards-reviewer** — the diff against documented standards + a Fowler code-smell baseline.
 - **spec-reviewer** — the diff against the originating spec/ticket: missing requirements, scope creep, implementation concerns, and traces every entry point's call chain for seam breaks and round-trip proof.
 - **security-reviewer** — the diff for security vulnerabilities and production hazards, assuming a hostile world.
 - **optimization-reviewer** — the diff for optimization issues, scaled to 100x and checked for silent errors.
 
-Omit the fixed-point to review the working tree against `HEAD`, or pass a ref (`/review main`). The four reports come back under **## Standards**, **## Spec**, **## Security**, and **## Optimization**.
+Omit the fixed-point to review the working tree against `HEAD`, or pass a ref (`/code-review main`). The four reports come back under **## Standards**, **## Spec**, **## Security**, and **## Optimization**.
 
 ## What's included
 
 - **`/wayfinder`** command + fog-mode guard (`src/extension.ts`).
 - **`subagent` tool** — vendored from `@earendil-works/pi-coding-agent` v0.80.6 (single/parallel/chain delegation). See `src/subagent/UPSTREAM.md`.
 - **4 agents** — `standards-reviewer`, `spec-reviewer`, `security-reviewer`, `optimization-reviewer`.
-- **1 prompt** — `/review`.
+- **1 prompt** — `/code-review`.
 
 Skills and the rest of the engineering lifecycle (`/to-spec`, `/to-tickets`, `/implement`, …) are **not** bundled — manage those yourself (e.g. from [mattpocock/skills](https://github.com/mattpocock/skills)).
 
