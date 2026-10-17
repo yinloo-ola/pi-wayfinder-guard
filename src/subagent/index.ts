@@ -249,13 +249,16 @@ async function writePromptToTempFile(agentName: string, prompt: string): Promise
 function getPiInvocation(args: string[]): { command: string; args: string[] } {
 	const currentScript = process.argv[1];
 	const isBunVirtualScript = currentScript?.startsWith("/$bunfs/root/");
-	if (currentScript && !isBunVirtualScript && fs.existsSync(currentScript)) {
+	// A node upgrade can delete process.execPath while pi keeps running;
+	// spawning it then fails with ENOENT, so fall back to `pi` on PATH.
+	const runtimeExists = fs.existsSync(process.execPath);
+	if (currentScript && !isBunVirtualScript && fs.existsSync(currentScript) && runtimeExists) {
 		return { command: process.execPath, args: [currentScript, ...args] };
 	}
 
 	const execName = path.basename(process.execPath).toLowerCase();
 	const isGenericRuntime = /^(node|bun)(\.exe)?$/.test(execName);
-	if (!isGenericRuntime) {
+	if (runtimeExists && !isGenericRuntime) {
 		return { command: process.execPath, args };
 	}
 
